@@ -101,7 +101,8 @@
             }
 
             #pairing-name {
-                font-size: 90px;
+                font-size: 45px;
+                color: #c54245;
             }
 
             #pairing-details {
@@ -238,9 +239,22 @@
       <span></span>
     </div>
     <div class="promo">
-                    <div class="title">Hi <span id="name"></span>! You've been paired with
-                    <script>document.getElementById('name').innerText = name</script></div>
-                    <div class="title">Please fill out <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXxcHno9qjugViadfpvEMhVk-eax1CtLaMyJtxAnGqGTO0-g/viewform?usp=sf_link">this form </a>to help your Secret Santa find the perfect gift </div>
+                    <div class="title">Hi <span id="name"></span>! You've been paired with</div>
+                    <script>document.getElementById('name').innerText = name</script>
+    <div class="pairing">
+    <div id="pairing-name"></div>
+    <div id="pairing-details"></div>
+    <script>
+        document.getElementById('pairing-name').innerText = pairingDefinition[1];
+
+        if (pairingDefinition[2]) {
+            document.getElementById('pairing-details').innerText = pairingDefinition[2];
+        } else {
+            document.getElementById('pairing-details').style.display = 'none';
+        }
+    </script>
+     <div class="title">Please fill out <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXxcHno9qjugViadfpvEMhVk-eax1CtLaMyJtxAnGqGTO0-g/viewform?usp=sf_link">this form </a>to help your Secret Santa find the perfect gift </div>
+</div>
     </div>
     <div class="box">
       <span></span>
@@ -249,19 +263,7 @@
   </div>
 
 
-                    <div class="pairing">
-                        <div id="pairing-name"></div>
-                        <div id="pairing-details"></div>
-                        <script>
-                            document.getElementById('pairing-name').innerText = pairingDefinition[1];
-
-                            if (pairingDefinition[2]) {
-                                document.getElementById('pairing-details').innerText = pairingDefinition[2];
-                            } else {
-                                document.getElementById('pairing-details').style.display = 'none';
-                            }
-                        </script>
-                    </div>
+  <
                     
 
                     <script>
