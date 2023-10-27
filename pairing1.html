@@ -1,0 +1,284 @@
+<!doctype html>
+<html>
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Secret Santa Pairing</title>
+
+        <script src="vendors/Lodash-3.10.1.js"></script>
+        <script src="vendors/Cryptojs.aes-3.1.2.js"></script>
+
+        <style>
+
+            * {
+                box-sizing: border-box;
+            }
+
+            html, body, .main {
+                margin: 0;
+
+                width: 100%;
+                height: 100%;
+
+                padding: 0;
+            }
+
+            body {
+                background: url(./assets/snow.png), url(./assets/whiterabbit.png), url(./assets/snow.png), radial-gradient(#8CB1CF, #8CB1CF);
+                background-repeat: repeat, no-repeat, repeat, no-repeat;
+
+                animation-name: snow;
+                animation-duration: 5s;
+                animation-iteration-count: infinite;
+                animation-timing-function: linear;
+
+                font-family: 'Comic Sans MS';
+            }
+
+            @keyframes snow {
+                from { background-position: 130px 40px, bottom right, 0 0, 0 0; }
+                to { background-position: 130px 640px, bottom right, 0 300px, 0 0; }
+            }
+
+            .spirit-of-christmas {
+                display: block;
+
+                position: absolute;
+                bottom: 0;
+                left: 0;
+
+                padding: 20px;
+
+                font-size: 10px;
+                text-decoration: none;
+
+                color: #FFFFFF;
+            }
+
+            .main {
+                display: flex;
+                position:relative; right: 15%; top: 30% ;
+              
+            }
+
+            .background {
+                position: absolute;
+
+                left: 0;
+                bottom: 0;
+            }
+
+            .wrapper {
+                margin: auto;
+                padding: 20px;
+
+                background: repeating-linear-gradient(
+                    45deg,
+                    #5CC48A,
+                    #5CC48A 30px,
+                    #FFFFFF 30px,
+                    #FFFFFF 60px,
+                    #EF3D3D 60px,
+                    #EF3D3D 90px,
+                    #FFFFFF 90px,
+                    #FFFFFF 120px
+                );
+
+                box-shadow: 3px 3px 10px rgba(0, 0, 0, .5);
+            }
+
+            .content {
+                padding: 40px;
+
+                background: #ffffff;
+
+                text-align: center;
+            }
+
+            .title {
+                font-size: 30px;
+            }
+
+            #pairing-name {
+                font-size: 90px;
+            }
+
+            #pairing-details {
+                margin-bottom: 20px;
+
+                font-size: 20px;
+            }
+
+            .affiliate {
+                display: block;
+                box-sizing: content-box;
+
+                margin-top: 40px;
+
+                border: none;
+
+                background: rgba(255, 255, 255, .7);
+            }
+
+            .affiliate + .affiliate {
+                margin-top: 40px;
+            }
+
+            .merry {
+                text-align: center;
+                padding-top: 40px;
+                font-size: 45px;
+            }
+
+            .present {
+  width: 410px;
+  margin: 0 auto;
+}
+.box, .lid {
+  background:
+    -webkit-radial-gradient(white 15%, transparent 15.1%),
+    -webkit-radial-gradient(white 15%, transparent 15.1%),
+  rgb(240, 58, 58);
+  background-position: 0 0, 25px 25px;
+  background-size: 50px 50px;
+  position: relative;
+  margin: 0 auto;
+}
+.box {
+  width: 400px;
+  height: 250px;
+}
+.lid {
+  width: 400px;
+  height: 70px;
+  box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+  z-index: 1;
+  padding: 0 2px;
+  background-color: rgb(216, 52, 52);
+  /* transitions */
+  top: 0;
+  left: 0;
+  transition: 
+    top ease-out 0.5s,
+    left ease-out 0.5s,
+    transform ease-out 0.5s;
+}
+.box span, .lid span {
+  position: absolute;
+  display: block;
+  background: rgba(235, 199, 0, 0.8);
+  box-shadow: 1px 2px 3px rgba(0,0,0,0.1);
+}
+.box span:first-child {
+  width: 100%;
+  height: 60px;
+  top: 80px;
+}
+.box span:last-child, .lid span {
+  width: 60px;
+  height: 100%;
+  left: 170px;
+}
+.lid span {
+  left: 172px;
+}
+.promo {
+  font-size: 30px;
+  color: white;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-align: center;
+  position: relative;
+  height: 0;
+  top: 10px;
+  transition: all ease-out 0.7s;
+}
+.promo p {
+  font-size: 24px;
+  margin: 0;
+}
+.promo h2 {
+  font-size: 40px;
+  margin: 0;
+}
+
+/* hover effects */
+.present:hover .lid {
+  top: -300px;
+  transform: rotateZ(10deg);
+  left: 10px;
+}
+.present:hover .promo {
+  top: -250px;
+}
+
+        </style>
+
+        <script>
+
+            var queryString = _.chain( location.search.slice( 1 ).split( /&/g ) )
+                .map( function ( item ) { if ( item ) return item.split( /=/ ).map( function ( str ) { return decodeURIComponent( str ); } ); } )
+                .compact().object().value();
+
+            var name = queryString.name;
+
+            var pairing = CryptoJS.AES.decrypt( queryString.pairing, queryString.key ).toString(CryptoJS.enc.Utf8);
+            var pairingDefinition = pairing.match( /^([^(]+)(?: (\([^)]+\)))?$/ );
+
+        </script>
+
+    </head>
+<h2 class="merry"> Merry Christmas Rabbits!</h2>
+    <body>
+
+        <div class="main">
+
+  <div class="present">
+    <div class="lid">
+      <span></span>
+    </div>
+    <div class="promo">
+                    <div class="title">Hi <span id="name"></span>! You've been paired with</div>
+                    <script>document.getElementById('name').innerText = name</script>
+                    <div class="title">Please fill out <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXxcHno9qjugViadfpvEMhVk-eax1CtLaMyJtxAnGqGTO0-g/viewform?usp=sf_link">this form </a>to help your Secret Santa find the perfect gift </div>
+    </div>
+    <div class="box">
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+
+                    <div class="pairing">
+                        <div id="pairing-name"></div>
+                        <div id="pairing-details"></div>
+                        <script>
+                            document.getElementById('pairing-name').innerText = pairingDefinition[1];
+
+                            if (pairingDefinition[2]) {
+                                document.getElementById('pairing-details').innerText = pairingDefinition[2];
+                            } else {
+                                document.getElementById('pairing-details').style.display = 'none';
+                            }
+                        </script>
+                    </div>
+                    
+
+                    <script>
+                        if (queryString.extra) {
+                            document.write('<iframe class="affiliate" src="http://rcm-eu.amazon-adsystem.com/e/cm?t=secrsant02e-21&o=8&p=48&l=ur1&category=books&banner=10DQAXJ7D1D2VTXMR682&f=ifr" width="728" height="90" scrolling="no" border="0" marginwidth="0" frameborder="0"></iframe>');
+                        }
+                    </script>
+
+                </div>
+            </div>
+
+            <a href="http://arcanis.github.io/secretsanta/" class="spirit-of-christmas">
+                Want to start your own Secret Santa with your friends? Click here to get started!
+            </a>
+
+        </div>
+
+    </body>
+
+</html>
