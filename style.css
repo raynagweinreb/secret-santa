@@ -1,0 +1,306 @@
+h2{
+    color: #fff;
+    position: relative;
+    margin-top: 45px;
+    text-align: center;
+    letter-spacing: 0.2em;
+    font-size: 4em;
+    font-family: 'Mountains of Christmas';
+    text-shadow: 0px 0px 8px rgba(255,65,185,1);
+}
+
+#wire{
+    text-align: center;
+    white-space: nowrap;
+    position: absolute;
+    padding: 0;
+    width: 100%;
+    top: -80px;
+    border-bottom: 3px solid #222;
+    height: 100px;
+ }
+
+ #wire li {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+    width: 15px;
+    height: 30px;
+    border-radius: 50%;
+    margin: 0px 15px;
+    top: 102px;
+    display: inline-block;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-iteration-count:infinite;
+    animation-name: even-flash;
+}
+
+ #wire li:nth-child(odd){
+     animation-name: odd-flash;
+ }
+
+#wire li:before {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 10px;
+    border-radius: 4px;
+    top: -5px;
+    left: 0px;
+    background: #444;
+}
+
+@keyframes even-flash {
+    0%, 100% {
+        background: rgba(255,230,65,1);
+        box-shadow: 0px 2px 20px 4px rgba(255,230,65,1);
+    }
+    50% {
+        background: rgba(255,230,65,0.5);
+        box-shadow: 0px 2px 20px 4px rgba(255,230,65,0.3);
+    }
+}
+
+@keyframes odd-flash {
+    50% {
+        background: rgba(255,65,185,1);
+        box-shadow: 0px 2px 20px 4px rgba(255,65,185,1);
+    }
+    0%,100% {
+        background: rgba(255,65,185,0.5);
+        box-shadow: 0px 2px 20px 4px rgba(255,65,185,0.3);
+    }
+}
+* {
+    box-sizing: border-box;
+}
+
+html, body, .main {
+    margin: 0;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 0;
+}
+
+body {
+    background: url(./assets/snow.png), url(./assets/snow.png), radial-gradient(#8CB1CF, #8CB1CF);
+    background-repeat: repeat, no-repeat, repeat, no-repeat;
+
+    animation-name: snow;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+
+    font-family: 'Comic Sans MS';
+    min-width: 1000px;
+}
+
+@keyframes snow {
+    from { background-position: 130px 40px, bottom right, 0 0, 0 0; }
+    to { background-position: 130px 640px, bottom right, 0 300px, 0 0; }
+}
+
+.spirit-of-christmas {
+    display: block;
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    padding: 20px;
+
+    font-size: 10px;
+    text-decoration: none;
+
+    color: #FFFFFF;
+}
+
+.main {
+    display: flex;
+    position:center;
+    top: 35%;
+    position: relative;
+  
+}
+
+.rabbit {
+    display: flex;
+    position:absolute;
+    right: 23%;
+    position:center;
+    z-index: 100;
+    
+
+}
+
+.background {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.wrapper {
+    margin: auto;
+    padding: 20px;
+
+    background: repeating-linear-gradient(
+        45deg,
+        #5CC48A,
+        #5CC48A 30px,
+        #FFFFFF 30px,
+        #FFFFFF 60px,
+        #EF3D3D 60px,
+        #EF3D3D 90px,
+        #FFFFFF 90px,
+        #FFFFFF 120px
+    );
+
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, .5);
+} 
+
+.content {
+    padding: 40px;
+
+    background: #ffffff;
+
+    text-align: center;
+}
+
+.title {
+    font-size: 30px;
+}
+
+#pairing-name {
+    font-size: 45px;
+    color: #c54245;
+}
+
+#pairing-details {
+    margin-bottom: 20px;
+
+    font-size: 20px;
+}
+
+.affiliate {
+    display: block;
+    box-sizing: content-box;
+
+    margin-top: 40px;
+
+    border: none;
+
+    background: rgba(255, 255, 255, .7);
+}
+
+.affiliate + .affiliate {
+    margin-top: 40px;
+}
+
+.merry {
+    text-align: center;
+    padding-top: 40px;
+    font-size: 45px;
+}
+
+.present {
+width: 410px;
+margin: 0 auto;
+}
+.box, .lid {
+
+        background:
+          -webkit-radial-gradient(white 15%, transparent 15.1%),
+          -webkit-radial-gradient(white 15%, transparent 15.1%),
+           #00873E;
+        background-position: 0 0, 25px 25px;
+        background-size: 50px 50px;
+        position: relative;
+        margin: 0 auto;
+
+}
+.box {
+width: 400px;
+height: 250px;
+/* background-image: url(./assets/WRG.png);
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-position: 52% 92%; */
+}
+.lid {
+width: 400px;
+height: 70px;
+box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+z-index: 1;
+padding: 0 2px; 
+background-color: #00873E;
+
+/* transitions */
+top: 0;
+left: 0;
+transition: 
+top ease-out 0.5s,
+left ease-out 0.5s,
+transform ease-out 0.5s;
+}
+.box span, .lid span {
+position: absolute;
+display: block;
+
+}
+.box span:first-child {
+width: 100%;
+height: 60px;
+top: 80px;
+}
+.box span:last-child, .lid span {
+width: 60px;
+height: 100%;
+left: 170px;
+}
+.lid span {
+left: 172px;
+}
+.promo {
+font-size: 24px;
+color: black;
+font-family: Georgia, 'Times New Roman', Times, serif;
+text-align: center;
+position: relative;
+height: 0;
+top: 10px;
+transition: all ease-out 0.7s;
+}
+.promo p {
+font-size: 24px;
+margin: 0;
+}
+.promo h2 {
+font-size: 32px;
+margin: 0;
+}
+
+/* hover effects */
+.present:hover .lid {
+top: -275px;
+transform: rotateZ(10deg);
+left: 10px;
+}
+.present:hover .promo {
+top: -225px;
+}
+.container {
+position: relative;
+text-align: center;
+z-index: 100;
+}
+ /* .box span, .lid span {
+    position: relative;
+    display: block;
+    background: #732539;
+    box-shadow: 1px 2px 3px rgba(0,0,0,0.1);
+}
