@@ -286,12 +286,12 @@ margin: 0;
 
 /* hover effects */
 .present:hover .lid {
-top: -275px;
+top: -290px;
 transform: rotateZ(10deg);
 left: 10px;
 }
 .present:hover .promo {
-top: -225px;
+top: -245px;
 }
 .container {
 position: relative;
